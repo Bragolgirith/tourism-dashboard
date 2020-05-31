@@ -5,7 +5,7 @@
         <v-icon left class="drag-handle">
           mdi-drag-vertical
         </v-icon>
-        {{ item.id }} {{ item.name }} {{ itemInfo.link }}
+        {{ itemInfo.id }} {{ itemInfo.name }}
       </div>
     </v-col>
 
@@ -23,7 +23,7 @@
   </v-row>
 </template>
 <script>
-  import itineraryItems from '../../../constants/itinerary-items.js'
+  import ItineraryItems from '../../../constants/itinerary-items.js'
 
   export default {
     name: 'ItineraryItem',
@@ -35,7 +35,7 @@
     },
     computed: {
       itemInfo: function () {
-        return itineraryItems.find(item => this.item.id === item.id)
+        return ItineraryItems.find(item => this.item.id === item.id)
       },
       // TODO: computed - combine the itemInfo
       //  with the number of people (from store)

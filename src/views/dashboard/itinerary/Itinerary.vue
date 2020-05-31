@@ -10,7 +10,7 @@
       </h1>
 
       <span class="font-weight-light subtitle-1">
-        Тук може да планирате маршрута
+        Тук можете да планирате маршрута
       </span>
     </section>
     <v-row>

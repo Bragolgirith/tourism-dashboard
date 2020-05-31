@@ -7,31 +7,24 @@ export default new Vuex.Store({
   state: {
     itineraryItems: [
       {
-        name: 'Вила Армира',
         id: '0А',
       },
       {
-        name: 'Joao',
         id: '0Б',
       },
       {
-        name: 'Jean',
         id: '1А',
       },
       {
-        name: 'Gerard',
         id: '1Б',
       },
       {
-        name: 'Juan',
         id: '1В',
       },
       {
-        name: 'Edgard',
         id: '1Г',
       },
       {
-        name: 'Johnson',
         id: '1Д',
       },
     ],

@@ -25,10 +25,7 @@
     props: {
       item: {
         type: Object,
-        default: () => ({
-          id: '-id-',
-          name: '-name-',
-        }),
+        required: true,
       },
     },
   }

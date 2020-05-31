@@ -1,6 +1,10 @@
 export default Object.freeze(
   [
     {
+      id: 'END-OF-DAY',
+      name: 'Край на ден',
+    },
+    {
       id: '0А',
       name: 'Нощувка в хотел "Лайт Касъл"',
       duration: '8:00',

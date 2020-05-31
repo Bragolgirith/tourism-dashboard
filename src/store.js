@@ -5,39 +5,35 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    days: [
-      [
-        {
-          name: 'Вила Армира',
-          id: 'A1',
-        },
-        {
-          name: 'Joao',
-          id: 'A2',
-        },
-        {
-          name: 'Jean',
-          id: 'A3',
-        },
-        {
-          name: 'Gerard',
-          id: 'A4',
-        },
-      ],
-      [
-        {
-          name: 'Juan',
-          id: 'A5',
-        },
-        {
-          name: 'Edgard',
-          id: 'A6',
-        },
-        {
-          name: 'Johnson',
-          id: 'A7',
-        },
-      ],
+    itineraryItems: [
+      {
+        name: 'Вила Армира',
+        id: '0А',
+      },
+      {
+        name: 'Joao',
+        id: '0Б',
+      },
+      {
+        name: 'Jean',
+        id: '1А',
+      },
+      {
+        name: 'Gerard',
+        id: '1Б',
+      },
+      {
+        name: 'Juan',
+        id: '1В',
+      },
+      {
+        name: 'Edgard',
+        id: '1Г',
+      },
+      {
+        name: 'Johnson',
+        id: '1Д',
+      },
     ],
     barColor: 'rgba(0, 0, 0, .8), rgba(0, 0, 0, .8)',
     drawer: null,
@@ -46,15 +42,14 @@ export default new Vuex.Store({
     SET_DRAWER (state, payload) {
       state.drawer = payload
     },
-    ADD_DAY (state) {
-      state.days.push([])
+    ADD_ITINERARY_ITEM (state, item) {
+      console.log('Adding itinerary item: ', item)
+      state.itineraryItems.push(item)
     },
-    REMOVE_DAY (state, { index }) {
-      // console.log('Removing day ', index)
-      state.days.splice(index, 1)
+    REMOVE_ITINERARY_ITEM (state, index) {
+      console.log('Removing itinerary item at index: ', index)
+      state.itineraryItems.splice(index, 1)
     },
   },
-  actions: {
-
-  },
+  actions: {},
 })

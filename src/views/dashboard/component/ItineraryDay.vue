@@ -34,6 +34,7 @@
         </v-row>
       </template>
     </draggable>
+
     <v-btn
       absolute bottom right
       fab small color="warning"
@@ -55,11 +56,11 @@
     props: {
       title: {
         type: String,
-        default: () => ('-No title-'),
+        required: true,
       },
       list: {
         type: Array,
-        default: () => ([]),
+        required: true,
       },
     },
     data () {

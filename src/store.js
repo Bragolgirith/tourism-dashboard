@@ -50,6 +50,7 @@ export default new Vuex.Store({
       state.days.push([])
     },
     REMOVE_DAY (state, { index }) {
+      // console.log('Removing day ', index)
       state.days.splice(index, 1)
     },
   },

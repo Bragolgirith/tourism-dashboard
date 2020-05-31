@@ -36,6 +36,7 @@
     <v-btn
       absolute bottom right
       fab small color="warning"
+      @click="removeDay"
     >
       <v-icon dark>
         mdi-minus
@@ -64,6 +65,9 @@
       return {}
     },
     methods: {
+      removeDay: function () {
+        this.$emit('removeDay')
+      },
       add: function () {
         this.list.push({ name: 'Juan' })
       },

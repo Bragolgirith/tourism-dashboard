@@ -19,12 +19,16 @@
         :key="`day-${i}`"
         :title="$i18n.t('day', [i+1])"
         :list="day"
+        @removeDay="removeDay({index: i})"
       />
     </template>
 
     <v-row>
       <v-spacer />
-      <v-btn class="my-3" fab dark color="primary">
+      <v-btn
+        fab dark color="primary" class="my-3"
+        @click="addDay"
+      >
         <v-icon dark>
           mdi-plus
         </v-icon>
@@ -36,7 +40,7 @@
 </template>
 <script>
   import ItineraryDay from '../component/ItineraryDay'
-  import { mapState } from 'vuex'
+  import { mapMutations, mapState } from 'vuex'
 
   export default {
     name: 'Itinerary',
@@ -45,6 +49,12 @@
     },
     computed: {
       ...mapState(['days']),
+    },
+    methods: {
+      ...mapMutations({
+        addDay: 'ADD_DAY',
+        removeDay: 'REMOVE_DAY',
+      }),
     },
   }
 </script>

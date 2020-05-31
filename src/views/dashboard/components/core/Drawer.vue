@@ -31,7 +31,7 @@
           contain
         >
           <v-img
-            src="https://demos.creative-tim.com/vuetify-material-dashboard/favicon.ico"
+            src="favicon.ico"
             max-height="30"
           />
         </v-list-item-avatar>
@@ -39,6 +39,7 @@
         <v-list-item-content>
           <v-list-item-title
             class="display-1"
+            style="line-height: 2rem"
             v-text="profile.title"
           />
         </v-list-item-content>

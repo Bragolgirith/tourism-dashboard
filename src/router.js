@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import i18n from './i18n'
 
 Vue.use(Router)
 
@@ -12,7 +13,7 @@ export default new Router({
       component: () => import('@/views/dashboard/Index'),
       children: [
         {
-          name: 'Itinerary',
+          name: i18n.t('itinerary'),
           path: 'tables/itinerary',
           component: () => import('@/views/dashboard/itinerary/Itinerary'),
         },

@@ -1,5 +1,6 @@
 {
-  "avatar": "Vuetify MD",
+  "avatar": "Tур Калкулатор",
+  "itinerary": "Маршрут",
   "buttons": "Buttons",
   "calendar": "Calendar",
   "charts": "Charts",
@@ -28,7 +29,6 @@
   "edit-profile": "Edit Profile",
   "register": "Register Page",
   "rforms": "Regular Forms",
-  "itinerary": "Itinerary",
   "rtables": "Regular Tables",
   "rtl": "RTL Support",
   "search": "Search",

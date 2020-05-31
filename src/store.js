@@ -19,6 +19,9 @@ export default new Vuex.Store({
         id: '1Б',
       },
       {
+        id: 'NEW_DAY',
+      },
+      {
         id: '1В',
       },
       {

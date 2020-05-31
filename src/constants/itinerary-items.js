@@ -1,8 +1,8 @@
 export default Object.freeze(
   [
     {
-      id: 'END-OF-DAY',
-      name: 'Край на ден',
+      id: 'NEW_DAY',
+      name: 'Нов ден',
     },
     {
       id: '0А',

@@ -21,7 +21,18 @@
         </template>
       </draggable>
 
+      <v-divider class="mx-4" />
+
       <v-card-text>
+        <v-btn
+          text
+          @click="addNewDay"
+        >
+          <v-icon left>
+            mdi-weather-sunset
+          </v-icon>
+          Нов ден
+        </v-btn>
         <v-autocomplete
           ref="inputAddItem"
           v-model="currentItem"
@@ -37,16 +48,6 @@
           @input="onItemInput"
         />
       </v-card-text>
-
-      <v-btn
-        absolute bottom right
-        fab small color="primary"
-        @click="addItineraryItem({id: '00', name: '-name-'})"
-      >
-        <v-icon dark>
-          mdi-plus
-        </v-icon>
-      </v-btn>
     </base-material-card>
   </div>
 </template>
@@ -77,6 +78,9 @@
         addItineraryItem: 'ADD_ITINERARY_ITEM',
         removeItineraryItem: 'REMOVE_ITINERARY_ITEM',
       }),
+      addNewDay: function () {
+        this.addItineraryItem({ id: 'NEW_DAY' })
+      },
       customFilter (item, queryText, itemText) {
         const textOne = item.id.toLowerCase()
         const textTwo = item.name.toLowerCase()

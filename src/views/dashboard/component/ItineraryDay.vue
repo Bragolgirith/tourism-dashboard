@@ -7,18 +7,19 @@
     <draggable
       class="list-group"
       :list="list"
-      group="people"
+      group="itinerary"
       handle=".drag-handle"
+      @end="dragEnd"
       @change="log"
     >
-      <template v-for="(element, i) in list">
+      <template v-for="(item, i) in list">
         <v-row :key="i" align="center">
           <v-col cols="9">
             <div class="font-weight-light">
               <v-icon left class="drag-handle">
                 mdi-drag-vertical
               </v-icon>
-              {{ element.id }} {{ element.name }}
+              {{ item.id }} {{ item.name }}
             </div>
           </v-col>
 
@@ -68,19 +69,12 @@
       removeDay: function () {
         this.$emit('removeDay')
       },
-      add: function () {
-        this.list.push({ name: 'Juan' })
-      },
-      replace: function () {
-        this.list = [{ name: 'Edgard' }]
-      },
-      clone: function (el) {
-        return {
-          name: el.name + ' cloned',
-        }
-      },
       log: function (evt) {
         window.console.log(evt)
+      },
+      dragEnd: function (evt) {
+        window.console.log('Move')
+        return false
       },
     },
   }

@@ -13,26 +13,50 @@
         Тук можете да конфигурирате маршрута
       </span>
     </section>
-
-    <template v-for="(day, i) in days">
-      <itinerary-day
-        :key="`day-${i}`"
-        :title="$i18n.t('day', [i+1])"
-        :list="day"
-        @removeDay="removeDay({index: i})"
-      />
-    </template>
-
     <v-row>
-      <v-spacer />
-      <v-btn
-        fab dark color="primary" class="my-3"
-        @click="addDay"
-      >
-        <v-icon dark>
-          mdi-plus
-        </v-icon>
-      </v-btn>
+      <v-col cols="12" md="6">
+        <template v-for="(day, i) in days">
+          <itinerary-day
+            :key="`day-${i}`"
+            :title="$i18n.t('day', [i+1])"
+            :list="day"
+            @removeDay="removeDay({index: i})"
+          />
+        </template>
+        <v-row>
+          <v-spacer />
+          <v-btn
+            fab dark color="primary" class="my-3"
+            @click="addDay"
+          >
+            <v-icon dark>
+              mdi-plus
+            </v-icon>
+          </v-btn>
+        </v-row>
+      </v-col>
+      <v-col cols="12" md="6">
+        //TODO: Render the itinerary
+        <!--<template v-for="(day, i) in days">-->
+        <!--  <itinerary-day-->
+        <!--    :key="`day-${i}`"-->
+        <!--    :title="$i18n.t('day', [i+1])"-->
+        <!--    :list="day"-->
+        <!--    @removeDay="removeDay({index: i})"-->
+        <!--  />-->
+        <!--</template>-->
+        <!--<v-row>-->
+        <!--  <v-spacer />-->
+        <!--  <v-btn-->
+        <!--    fab dark color="primary" class="my-3"-->
+        <!--    @click="addDay"-->
+        <!--  >-->
+        <!--    <v-icon dark>-->
+        <!--      mdi-plus-->
+        <!--    </v-icon>-->
+        <!--  </v-btn>-->
+        <!--</v-row>-->
+      </v-col>
     </v-row>
 
     <div class="py-3" />

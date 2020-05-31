@@ -9,33 +9,33 @@ export default new Vuex.Store({
       [
         {
           name: 'Вила Армира',
-          id: 1,
+          id: 'A1',
         },
         {
           name: 'Joao',
-          id: 2,
+          id: 'A2',
         },
         {
           name: 'Jean',
-          id: 3,
+          id: 'A3',
         },
         {
           name: 'Gerard',
-          id: 4,
+          id: 'A4',
         },
       ],
       [
         {
           name: 'Juan',
-          id: 5,
+          id: 'A5',
         },
         {
           name: 'Edgard',
-          id: 6,
+          id: 'A6',
         },
         {
           name: 'Johnson',
-          id: 7,
+          id: 'A7',
         },
       ],
     ],

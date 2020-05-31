@@ -10,60 +10,41 @@
       </h1>
 
       <span class="font-weight-light subtitle-1">
-        Тук можете да конфигурирате локациите и тяхното разпределение по дни
+        Тук можете да конфигурирате маршрута
       </span>
     </section>
 
-    <itinerary-day title="Ден 1" :list="list1" />
+    <template v-for="(day, i) in days">
+      <itinerary-day
+        :key="`day-${i}`"
+        :title="$i18n.t('day', [i+1])"
+        :list="day"
+      />
+    </template>
 
-    <itinerary-day title="Ден 2" :list="list2" />
+    <v-row>
+      <v-spacer />
+      <v-btn class="my-3" fab dark color="primary">
+        <v-icon dark>
+          mdi-plus
+        </v-icon>
+      </v-btn>
+    </v-row>
 
     <div class="py-3" />
   </v-container>
 </template>
 <script>
   import ItineraryDay from '../component/ItineraryDay'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'Itinerary',
     components: {
       ItineraryDay,
     },
-    data () {
-      return {
-        list1: [
-          {
-            name: 'Вила Армира',
-            id: 1,
-          },
-          {
-            name: 'Joao',
-            id: 2,
-          },
-          {
-            name: 'Jean',
-            id: 3,
-          },
-          {
-            name: 'Gerard',
-            id: 4,
-          },
-        ],
-        list2: [
-          {
-            name: 'Juan',
-            id: 5,
-          },
-          {
-            name: 'Edgard',
-            id: 6,
-          },
-          {
-            name: 'Johnson',
-            id: 7,
-          },
-        ],
-      }
+    computed: {
+      ...mapState(['days']),
     },
   }
 </script>

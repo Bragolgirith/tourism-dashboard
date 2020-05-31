@@ -1,6 +1,7 @@
 {
   "avatar": "Tур Калкулатор",
   "itinerary": "Маршрут",
+  "day": "Ден {0}",
   "buttons": "Buttons",
   "calendar": "Calendar",
   "charts": "Charts",

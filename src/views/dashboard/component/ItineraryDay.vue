@@ -1,7 +1,7 @@
 <template>
   <base-material-card
     icon="mdi-clipboard-text"
-    title="Ден 1"
+    :title="title"
     class="px-5 py-3"
   >
     <draggable
@@ -18,27 +18,29 @@
               <v-icon left class="drag-handle">
                 mdi-drag-vertical
               </v-icon>
-              {{ i }} {{ element.name }}
+              {{ element.id }} {{ element.name }}
             </div>
           </v-col>
 
-          <v-col
-            cols="3"
-            class="text-right"
-          >
+          <v-col cols="3" class="text-right">
             <v-icon class="mx-1">
               mdi-pencil
             </v-icon>
-            <v-icon
-              color="error"
-              class="mx-1"
-            >
+            <v-icon color="error" class="mx-1">
               mdi-close
             </v-icon>
           </v-col>
         </v-row>
       </template>
     </draggable>
+    <v-btn
+      absolute bottom right
+      fab small color="warning"
+    >
+      <v-icon dark>
+        mdi-minus
+      </v-icon>
+    </v-btn>
   </base-material-card>
 </template>
 <script>
@@ -58,7 +60,9 @@
         default: () => ([]),
       },
     },
-    data () {},
+    data () {
+      return {}
+    },
     methods: {
       add: function () {
         this.list.push({ name: 'Juan' })

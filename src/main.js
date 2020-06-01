@@ -19,9 +19,12 @@ import './plugins/base'
 import './plugins/chartist'
 import './plugins/vee-validate'
 import vuetify from './plugins/vuetify'
+import DayjsBgPlugin from './plugins/dayjs-bg-plugin'
 import i18n from './i18n'
 
 Vue.config.productionTip = false
+
+Vue.use(DayjsBgPlugin, { locale: 'bg' })
 
 new Vue({
   router,

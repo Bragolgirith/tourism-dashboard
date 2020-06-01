@@ -21,7 +21,7 @@
 </template>
 <script>
   export default {
-    name: 'ItineraryDayItem',
+    name: 'RenderedItineraryDayItem',
     props: {
       item: {
         type: Object,

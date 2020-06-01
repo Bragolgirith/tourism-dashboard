@@ -18,7 +18,7 @@
         <itinerary-planner />
       </v-col>
       <v-col cols="12" md="6">
-        //TODO: Render the itinerary
+        <rendered-itinerary />
       </v-col>
     </v-row>
     <div class="py-3" />
@@ -26,10 +26,12 @@
 </template>
 <script>
   import ItineraryPlanner from '../component/ItineraryPlanner'
+  import RenderedItinerary from '../component/RenderedItinerary'
 
   export default {
     name: 'Itinerary',
     components: {
+      RenderedItinerary,
       ItineraryPlanner,
     },
   }

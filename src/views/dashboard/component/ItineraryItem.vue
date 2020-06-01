@@ -12,7 +12,7 @@
           {{ itemInfo.name }}
         </template>
         <template v-else-if="itemInfo.type === TYPES.LOCATIONS">
-          {{ itemInfo.id }} {{ itemInfo.name }}
+          {{ itemInfo.id }} {{ itemInfo.name }} ({{ totalPrice }} лв.)
         </template>
         <template v-else>
           {{ JSON.stringify(itemInfo) }}
@@ -35,6 +35,7 @@
 </template>
 <script>
   import { TYPES, AllItems } from '../../../constants/itinerary-items.js'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'ItineraryItem',
@@ -45,12 +46,14 @@
       },
     },
     computed: {
+      ...mapGetters(['group']),
       itemInfo: function () {
         return AllItems.find(item => this.item.id === item.id)
       },
-      // TODO: computed - combine the itemInfo
-      //  with the number of people (from store)
-      //  and any price modifiers to calculate the total price
+      totalPrice: function () {
+        // TODO: Add children/dogs/price modifiers. Extract to a util. "(4 възрастни * 20 лв.) + (2 деца * 10 лв.) + (1 куче * 5 лв.) = 105 лв."
+        return this.group.adultsCount * this.itemInfo.pricePerAdult
+      },
     },
     created () {
       this.TYPES = TYPES

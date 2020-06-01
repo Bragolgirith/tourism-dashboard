@@ -49,7 +49,7 @@
 <script>
   import draggable from 'vuedraggable'
   export default {
-    name: 'ItineraryDay',
+    name: 'RenderedItineraryDay',
     components: {
       draggable,
     },

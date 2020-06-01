@@ -34,7 +34,7 @@
   </v-row>
 </template>
 <script>
-  import { TYPES, AllItems } from '../../../constants/itinerary-items.js'
+  import { TYPES, AllItems } from '@/constants/itinerary-items'
   import { mapGetters } from 'vuex'
 
   export default {

@@ -56,23 +56,18 @@ export default new Vuex.Store({
       state.drawer = payload
     },
     UPDATE_GROUP (state, newValue) {
-      console.log('Updating group: ', newValue)
       state.group = newValue
     },
     RESET_GROUP (state) {
-      console.log('Resetting group')
       state.group = initialGroupState()
     },
     UPDATE_ITINERARY_ITEMS (state, items) {
-      console.log('Updating itinerary items: ', items)
       state.itineraryItems = items
     },
     ADD_ITINERARY_ITEM (state, item) {
-      console.log('Adding itinerary item: ', item)
       state.itineraryItems.push(item)
     },
     REMOVE_ITINERARY_ITEM (state, index) {
-      console.log('Removing itinerary item at index: ', index)
       state.itineraryItems.splice(index, 1)
     },
   },

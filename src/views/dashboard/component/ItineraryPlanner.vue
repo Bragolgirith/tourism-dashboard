@@ -51,7 +51,7 @@
   import draggable from 'vuedraggable'
   import { mapMutations, mapState } from 'vuex'
   import ItineraryItem from './ItineraryItem'
-  import { AllItems } from '../../../constants/itinerary-items.js'
+  import { AllItems } from '@/constants/itinerary-items'
 
   export default {
     name: 'ItineraryPlanner',
@@ -89,7 +89,9 @@
           this.addItineraryItem({ id: item.id })
         }
       },
-      formatInput: function (item) { return `${item.id} ${item.name}` },
+      formatInput: function (item) {
+        return `${item.id} ${item.name}`
+      },
       onChange: function (evt) {
         // Commit state to the store.
         this.$store.commit('UPDATE_ITINERARY_ITEMS', this.itineraryItems)

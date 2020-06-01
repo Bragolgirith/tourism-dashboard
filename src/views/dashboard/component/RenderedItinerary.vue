@@ -16,7 +16,7 @@
           </div>
 
           <div class="subtitle-1 font-weight-light">
-            {{ $formatDate(startDate) }}
+            {{ $formatDate(day.date) }}
           </div>
         </template>
         <v-card-text>
@@ -24,15 +24,23 @@
             hide-default-footer
             :headers="headers"
             :items="day.items"
-          />
+          >
+            <template v-slot:item.startTime="{ item }">
+              <span>{{ item.startTime.format('HH:mm') }}</span>
+            </template>
+            <template v-slot:item.durationInMinutes="{ item }">
+              <span>{{ $formatDuration(item.durationInMinutes) }}</span>
+            </template>
+          </v-data-table>
         </v-card-text>
       </base-material-card>
     </v-timeline-item>
   </v-timeline>
 </template>
 <script>
-
   import { mapGetters } from 'vuex'
+  import { populateDaysWithInfo, populateItemsWithInfo, splitIntoDays } from '@/utils'
+
   // import RenderedItineraryDay from './RenderedItineraryDay'
 
   export default {
@@ -46,8 +54,13 @@
         headers: [
           {
             sortable: false,
-            text: 'Време',
-            value: 'time',
+            text: 'Час',
+            value: 'startTime',
+          },
+          {
+            sortable: false,
+            text: '',
+            value: 'durationInMinutes',
           },
           {
             sortable: false,
@@ -65,20 +78,26 @@
     },
     computed: {
       ...mapGetters(['group', 'itineraryItems']),
+      /* {} */
       days: function () {
-        return [{
-          id: 1,
-          color: 'red',
-          title: 'Ден 1',
-          text: 'teeeeext',
-          subtext: 'subteeeeext',
-        }, {
-          id: 2,
-          color: 'green',
-          title: 'Ден 2',
-          text: 'teeeeext',
-          subtext: 'subteeeeext',
-        }]
+        const startDate = this.$dayjs(this.startDate)
+          .hour(8)
+          .minute(0)
+          .second(0)
+
+        const days = splitIntoDays(this.itineraryItems)
+        const daysWithInfo = populateDaysWithInfo(days, startDate)
+        const daysWithItemsWithInfo = daysWithInfo.map(day => {
+          const itemsWithInfo = populateItemsWithInfo(day.items, startDate)
+
+          return {
+            ...day,
+            items: itemsWithInfo,
+          }
+        })
+
+        console.log(daysWithItemsWithInfo)
+        return daysWithItemsWithInfo
       },
     },
   }

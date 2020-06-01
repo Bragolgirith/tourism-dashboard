@@ -9,7 +9,7 @@ const Locations = Object.freeze(
     {
       id: '0А',
       name: 'Нощувка в хотел "Лайт Касъл"',
-      duration: '8:00',
+      durationInMinutes: 480,
       priceConstant: 0,
       pricePerAdult: 20,
       link: 'линк 0А',
@@ -19,7 +19,7 @@ const Locations = Object.freeze(
     {
       id: '0Б',
       name: 'Нощувка в къща гости "Ахрида"',
-      duration: '8:00',
+      durationInMinutes: 480,
       priceConstant: 0,
       pricePerAdult: 18.8,
       link: 'линк 0Б',
@@ -29,7 +29,7 @@ const Locations = Object.freeze(
     {
       id: '1А',
       name: 'Училище за родители  - големи ',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 25,
       pricePerAdult: 2.44,
       link: 'линк 1А',
@@ -39,7 +39,7 @@ const Locations = Object.freeze(
     {
       id: '1Б',
       name: 'Училище за родители  - бебета ',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 13,
       pricePerAdult: 6.33,
       link: 'линк 1Б',
@@ -49,7 +49,7 @@ const Locations = Object.freeze(
     {
       id: '1В',
       name: 'Училище за бъдещи семейства  ',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 15.5,
       pricePerAdult: 2.8,
       link: 'линк 1Б',
@@ -59,7 +59,7 @@ const Locations = Object.freeze(
     {
       id: '1Г',
       name: 'Духовно наследство - Църква Ивайловград, аязмо Барбука, Атеренски мост, Манастир ',
-      duration: '3:30',
+      durationInMinutes: 210,
       priceConstant: 7,
       pricePerAdult: 12,
       link: 'линк 1Г',
@@ -69,7 +69,7 @@ const Locations = Object.freeze(
     {
       id: '1Д',
       name: 'Духовно наследство - Църкви Ивайловград, Свирачи, Долно Луково',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 12,
       pricePerAdult: 2.1,
       link: 'линк 1Д',
@@ -79,7 +79,7 @@ const Locations = Object.freeze(
     {
       id: '1Е',
       name: 'Църкви Ивайловград и Плевун (капитан Петко)',
-      duration: '4:00',
+      durationInMinutes: 240,
       priceConstant: 12.5,
       pricePerAdult: 2.2,
       link: 'линк 1Е',
@@ -89,7 +89,7 @@ const Locations = Object.freeze(
     {
       id: '1Ж',
       name: 'Духовно наследство -  Църкви в 3 държави: Ивайловград, Димотика, Одрин ',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 13,
       pricePerAdult: 2.3,
       link: 'линк 1Ж',
@@ -99,7 +99,7 @@ const Locations = Object.freeze(
     {
       id: '1З',
       name: 'Меандрите на Бяла река - пясъчен плаж, грил, скокове във вода от 6-8 м., каменно "джакузи" ',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 13.5,
       pricePerAdult: 2.4,
       link: 'линк 1З',
@@ -109,7 +109,7 @@ const Locations = Object.freeze(
     {
       id: '1И',
       name: 'Меандрите на Бяла река - преход с лагер, лагерен огън ',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 14,
       pricePerAdult: 2.5,
       link: 'линк 1И',
@@ -119,7 +119,7 @@ const Locations = Object.freeze(
     {
       id: '1К',
       name: 'Язовир Ивайловград с моторни лодки  - залив "Цимбала" - с обяд риба, на брега',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 14.5,
       pricePerAdult: 2.6,
       link: 'линк 1К',
@@ -129,7 +129,7 @@ const Locations = Object.freeze(
     {
       id: '1Л',
       name: 'Язовир Ивайловград с моторни лодки  - целодневна, до Маджарово',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 15,
       pricePerAdult: 2.7,
       link: 'линк 1Л',
@@ -139,7 +139,7 @@ const Locations = Object.freeze(
     {
       id: '1М',
       name: 'Риболовен туризъм  - р. Арда и язовира (спининг, кефал)',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 15.5,
       pricePerAdult: 2.8,
       link: 'линк 1М',
@@ -149,7 +149,7 @@ const Locations = Object.freeze(
     {
       id: '1Н',
       name: 'Риболовен туризъм  - Бяла Река (спининг, кефал)',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 16,
       pricePerAdult: 2.9,
       link: 'линк 1Н',
@@ -159,7 +159,7 @@ const Locations = Object.freeze(
     {
       id: '1О',
       name: 'Риболовен туризъм  - Реки и водоеми в Гърция - р. Бяла река, р. Марица, р. Еритропотамос',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 16.5,
       pricePerAdult: 3,
       link: 'линк 1О',
@@ -169,7 +169,7 @@ const Locations = Object.freeze(
     {
       id: '1П',
       name: 'Риболовен туризъм  - Сом на кльонк по язовир Ивайловград ',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 17,
       pricePerAdult: 3.1,
       link: 'линк 1П',
@@ -179,7 +179,7 @@ const Locations = Object.freeze(
     {
       id: '1Р',
       name: 'Винен туризъм - дегустация на домашни и/или маркови вина.',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 17.5,
       pricePerAdult: 3.2,
       link: 'линк 1Р',
@@ -189,7 +189,7 @@ const Locations = Object.freeze(
     {
       id: '1С',
       name: 'Разпознаване и събиране на билки и подправки',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 17.55,
       pricePerAdult: 3.25,
       link: 'линк 1С',
@@ -199,7 +199,7 @@ const Locations = Object.freeze(
     {
       id: '1Т',
       name: 'Тийм билдинг - групови игри',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 17.6,
       pricePerAdult: 3.3,
       link: 'линк 1Т',
@@ -209,7 +209,7 @@ const Locations = Object.freeze(
     {
       id: '1У',
       name: 'Обучение по оцеляване                                                     ',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 17.65,
       pricePerAdult: 3.35,
       link: 'линк 1У',
@@ -219,7 +219,7 @@ const Locations = Object.freeze(
     {
       id: '1Ф',
       name: 'Приготвяне на домашна зимнина - за есента',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 17.7,
       pricePerAdult: 3.4,
       link: 'линк 1Ф',
@@ -229,7 +229,7 @@ const Locations = Object.freeze(
     {
       id: '1Х',
       name: 'Тъкане на стан кърпи, сувенири от цар. шума, житни класове',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 17.75,
       pricePerAdult: 3.45,
       link: 'линк 1Х',
@@ -239,7 +239,7 @@ const Locations = Object.freeze(
     {
       id: '1Ц',
       name: '',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 17.8,
       pricePerAdult: 3.5,
       link: 'линк 1Ц',
@@ -249,7 +249,7 @@ const Locations = Object.freeze(
     {
       id: '1Ч',
       name: 'Караоке вечер ',
-      duration: '3:30',
+      durationInMinutes: 210,
       priceConstant: 17.85,
       pricePerAdult: 3.55,
       link: 'линк 1Ч',
@@ -259,7 +259,7 @@ const Locations = Object.freeze(
     {
       id: '2А',
       name: 'Вело преход - кросови велосипеди (степени на трудност)',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 17.9,
       pricePerAdult: 3.6,
       link: 'линк 2А',
@@ -269,7 +269,7 @@ const Locations = Object.freeze(
     {
       id: '2Б',
       name: 'Вело преход - шосени велосипеди (степени на трудност)',
-      duration: '4:00',
+      durationInMinutes: 240,
       priceConstant: 17.95,
       pricePerAdult: 3.65,
       link: 'линк 2Б',
@@ -279,7 +279,7 @@ const Locations = Object.freeze(
     {
       id: '2В',
       name: 'Посещение на местни събития, фестивали - от календара на общината',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 18,
       pricePerAdult: 3.7,
       link: 'линк 2В',
@@ -289,7 +289,7 @@ const Locations = Object.freeze(
     {
       id: '2Г',
       name: 'Вила Армира ',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 18.05,
       pricePerAdult: 3.75,
       link: 'линк 2Г',
@@ -299,7 +299,7 @@ const Locations = Object.freeze(
     {
       id: '2Д',
       name: 'Могила с. Свирачи   ',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 18.1,
       pricePerAdult: 3.8,
       link: 'линк 2Д',
@@ -309,7 +309,7 @@ const Locations = Object.freeze(
     {
       id: '2Е',
       name: 'Крепост Лютица',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 18.15,
       pricePerAdult: 3.85,
       link: 'линк 2Е',
@@ -319,7 +319,7 @@ const Locations = Object.freeze(
     {
       id: '2Ж',
       name: 'Църквата в с. Плевун',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 18.2,
       pricePerAdult: 3.9,
       link: 'линк 2Ж',
@@ -329,7 +329,7 @@ const Locations = Object.freeze(
     {
       id: '2З',
       name: 'Църквата в с. Долно Луково',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 18.25,
       pricePerAdult: 3.95,
       link: 'линк 2З',
@@ -339,7 +339,7 @@ const Locations = Object.freeze(
     {
       id: '2И',
       name: 'Общински музей Ивайловград',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 18.3,
       pricePerAdult: 4,
       link: 'линк 2И',
@@ -349,7 +349,7 @@ const Locations = Object.freeze(
     {
       id: '2К',
       name: 'Бубарска къща - Паскалева къща',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 18.35,
       pricePerAdult: 4.05,
       link: 'линк 2К',
@@ -359,7 +359,7 @@ const Locations = Object.freeze(
     {
       id: '2Л',
       name: 'Тракийски долмени ',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 18.4,
       pricePerAdult: 4.1,
       link: 'линк 2Л',
@@ -369,7 +369,7 @@ const Locations = Object.freeze(
     {
       id: '2М',
       name: 'Атеренски мост ',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 18.45,
       pricePerAdult: 4.15,
       link: 'линк 2М',
@@ -379,7 +379,7 @@ const Locations = Object.freeze(
     {
       id: '2Н',
       name: 'Пътят на сиренето (Новото тракийско злато)',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 18.5,
       pricePerAdult: 4.2,
       link: 'линк 2Н',
@@ -389,7 +389,7 @@ const Locations = Object.freeze(
     {
       id: '2О',
       name: 'Посещение действаща таханджийница - Ив/град',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 18.55,
       pricePerAdult: 4.25,
       link: 'линк 2О',
@@ -399,7 +399,7 @@ const Locations = Object.freeze(
     {
       id: '2П',
       name: 'Посещение на действаща таханджийница - .....',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 18.6,
       pricePerAdult: 4.3,
       link: 'линк 2П',
@@ -409,7 +409,7 @@ const Locations = Object.freeze(
     {
       id: '3А',
       name: 'Снимки с местни костюми        ',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 18.65,
       pricePerAdult: 4.35,
       link: 'линк 3А',
@@ -419,7 +419,7 @@ const Locations = Object.freeze(
     {
       id: '3Б',
       name: 'Заснемане на преживяванията ',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 18.7,
       pricePerAdult: 4.4,
       link: 'линк 3Б',
@@ -429,7 +429,7 @@ const Locations = Object.freeze(
     {
       id: '3В',
       name: 'Заснемане от въздуха',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 18.75,
       pricePerAdult: 4.45,
       link: 'линк 3В',
@@ -439,7 +439,7 @@ const Locations = Object.freeze(
     {
       id: '3Г',
       name: 'Грижа за децата, докато родителите участват в атракция',
-      duration: '3:30',
+      durationInMinutes: 210,
       priceConstant: 18.8,
       pricePerAdult: 4.5,
       link: 'линк 3Г',
@@ -449,7 +449,7 @@ const Locations = Object.freeze(
     {
       id: '3Д',
       name: 'Игри за деца (от нашето детство)                                       ',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 18.85,
       pricePerAdult: 4.55,
       link: 'линк 3Д',
@@ -459,7 +459,7 @@ const Locations = Object.freeze(
     {
       id: '3Е',
       name: 'Акордеон и/или др. жив музикален съпровод и анимация',
-      duration: '4:00',
+      durationInMinutes: 240,
       priceConstant: 18.9,
       pricePerAdult: 4.6,
       link: 'линк 3Е',
@@ -469,7 +469,7 @@ const Locations = Object.freeze(
     {
       id: '3Ж',
       name: 'Развръщане на бивак на местността (за хранене)',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 18.95,
       pricePerAdult: 4.65,
       link: 'линк 3Ж',
@@ -479,7 +479,7 @@ const Locations = Object.freeze(
     {
       id: '3З',
       name: 'Развръщане на бивак на местността (за нощувка)',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 19,
       pricePerAdult: 4.7,
       link: 'линк 3З',
@@ -489,7 +489,7 @@ const Locations = Object.freeze(
     {
       id: '4А',
       name: 'Гърция, Пенталофос  - "По желязната завеса" + дивечово стопанство.  ',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 19.05,
       pricePerAdult: 4.75,
       link: 'линк 4А',
@@ -499,7 +499,7 @@ const Locations = Object.freeze(
     {
       id: '4Б',
       name: 'Гърция,Триетнос ',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 19.1,
       pricePerAdult: 4.8,
       link: 'линк 4Б',
@@ -509,7 +509,7 @@ const Locations = Object.freeze(
     {
       id: '4В',
       name: 'Гърция, Спилео - "Музей - археологически находки от горен Еврос" + правене на ръчна юфка/кус-кус.  ',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 19.15,
       pricePerAdult: 4.85,
       link: 'линк 4В',
@@ -519,7 +519,7 @@ const Locations = Object.freeze(
     {
       id: '4Г',
       name: 'Гърция, Орестиада',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 19.2,
       pricePerAdult: 4.9,
       link: 'линк 4Г',
@@ -529,7 +529,7 @@ const Locations = Object.freeze(
     {
       id: '4Д',
       name: 'Гърция, Петрота - Музей на камъка ',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 19.25,
       pricePerAdult: 4.95,
       link: 'линк 4Д',
@@ -539,7 +539,7 @@ const Locations = Object.freeze(
     {
       id: '4Е',
       name: 'Гърция, с. Микри Доксипара',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 19.3,
       pricePerAdult: 5,
       link: 'линк 4Е',
@@ -549,7 +549,7 @@ const Locations = Object.freeze(
     {
       id: '4Ж',
       name: 'Гърция, Димотика ',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 19.35,
       pricePerAdult: 5.05,
       link: 'линк 4Ж',
@@ -559,7 +559,7 @@ const Locations = Object.freeze(
     {
       id: '4З',
       name: 'Гърция, Софлу',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 19.4,
       pricePerAdult: 5.1,
       link: 'линк 4З',
@@ -569,7 +569,7 @@ const Locations = Object.freeze(
     {
       id: '4И',
       name: 'Гърция, Александруполи',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 19.45,
       pricePerAdult: 5.15,
       link: 'линк 4И',
@@ -579,7 +579,7 @@ const Locations = Object.freeze(
     {
       id: '5А',
       name: 'Туристическа обиколка на Одрин',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 19.5,
       pricePerAdult: 5.2,
       link: 'линк 5А',
@@ -589,7 +589,7 @@ const Locations = Object.freeze(
     {
       id: '6А',
       name: 'Обиколка с каруца/магаре                                                       ',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 19.55,
       pricePerAdult: 5.25,
       link: 'линк 6А',
@@ -599,7 +599,7 @@ const Locations = Object.freeze(
     {
       id: '6Б',
       name: 'Каракачански коне в с. Костилково                                         ',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 19.6,
       pricePerAdult: 5.3,
       link: 'линк 6Б',
@@ -609,7 +609,7 @@ const Locations = Object.freeze(
     {
       id: '9А',
       name: 'Закуска',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 19.65,
       pricePerAdult: 5.35,
       link: 'линк 9А',
@@ -619,7 +619,7 @@ const Locations = Object.freeze(
     {
       id: '9Б',
       name: 'Обяд',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 19.7,
       pricePerAdult: 5.4,
       link: 'линк 9Б',
@@ -629,7 +629,7 @@ const Locations = Object.freeze(
     {
       id: '9В',
       name: 'Вечеря',
-      duration: '3:30',
+      durationInMinutes: 210,
       priceConstant: 19.75,
       pricePerAdult: 5.45,
       link: 'линк 9В',
@@ -639,7 +639,7 @@ const Locations = Object.freeze(
     {
       id: '9Г',
       name: 'Попътна закуска',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 19.8,
       pricePerAdult: 5.5,
       link: 'линк 9Г',
@@ -649,7 +649,7 @@ const Locations = Object.freeze(
     {
       id: '9Д',
       name: 'На гости в селски дом - обяд                                                ',
-      duration: '4:00',
+      durationInMinutes: 240,
       priceConstant: 19.85,
       pricePerAdult: 5.55,
       link: 'линк 9Д',
@@ -659,7 +659,7 @@ const Locations = Object.freeze(
     {
       id: '9Е',
       name: 'На гости в селски дом - вечеря                   ',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 19.9,
       pricePerAdult: 5.6,
       link: 'линк 9Е',
@@ -669,7 +669,7 @@ const Locations = Object.freeze(
     {
       id: '9Ж',
       name: 'Закуската на баба',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 19.95,
       pricePerAdult: 5.65,
       link: 'линк 9Ж',
@@ -679,7 +679,7 @@ const Locations = Object.freeze(
     {
       id: '9З',
       name: '"Надупено" пиле (върху бирена бутилка, под тенекия)',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 20,
       pricePerAdult: 5.7,
       link: 'линк 9З',
@@ -689,7 +689,7 @@ const Locations = Object.freeze(
     {
       id: '9И',
       name: 'Тиква пълнена със заек/пиле',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 20.05,
       pricePerAdult: 5.75,
       link: 'линк 9И',
@@ -699,7 +699,7 @@ const Locations = Object.freeze(
     {
       id: '9К',
       name: 'Агне/яре на фурна',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 20.1,
       pricePerAdult: 5.8,
       link: 'линк 9К',
@@ -709,7 +709,7 @@ const Locations = Object.freeze(
     {
       id: '9Л',
       name: 'Агне/яре чеверме/трап',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 20.15,
       pricePerAdult: 5.85,
       link: 'линк 9Л',
@@ -719,7 +719,7 @@ const Locations = Object.freeze(
     {
       id: '9М',
       name: 'Сладкиши - с кафето',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 20.2,
       pricePerAdult: 5.9,
       link: 'линк 9М',
@@ -729,7 +729,7 @@ const Locations = Object.freeze(
     {
       id: '9Н',
       name: 'Домашна пита - 30 парчета в тава',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 20.25,
       pricePerAdult: 5.95,
       link: 'линк 9Н',
@@ -739,7 +739,7 @@ const Locations = Object.freeze(
     {
       id: '9О',
       name: 'Зелник, тиквеник, баница със спанак/коприва',
-      duration: '2:30',
+      durationInMinutes: 150,
       priceConstant: 20.3,
       pricePerAdult: 6,
       link: 'линк 9О',
@@ -749,7 +749,7 @@ const Locations = Object.freeze(
     {
       id: '9П',
       name: 'традиционна гръцка кухня',
-      duration: '3:00',
+      durationInMinutes: 180,
       priceConstant: 20.35,
       pricePerAdult: 6.05,
       link: 'линк 9П',
@@ -759,7 +759,7 @@ const Locations = Object.freeze(
     {
       id: '9Р',
       name: 'традиционнни, местни и био храни',
-      duration: '1:00',
+      durationInMinutes: 60,
       priceConstant: 20.4,
       pricePerAdult: 6.1,
       link: 'линк 9Р',
@@ -769,7 +769,7 @@ const Locations = Object.freeze(
     {
       id: '9С',
       name: 'Риба',
-      duration: '1:30',
+      durationInMinutes: 90,
       priceConstant: 20.45,
       pricePerAdult: 6.15,
       link: 'линк 9С',
@@ -779,7 +779,7 @@ const Locations = Object.freeze(
     {
       id: '9Т',
       name: 'Сом ',
-      duration: '2:00',
+      durationInMinutes: 120,
       priceConstant: 20.5,
       pricePerAdult: 6.2,
       link: 'линк 9Т',

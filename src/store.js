@@ -63,6 +63,10 @@ export default new Vuex.Store({
       console.log('Resetting group')
       state.group = initialGroupState()
     },
+    UPDATE_ITINERARY_ITEMS (state, items) {
+      console.log('Updating itinerary items: ', items)
+      state.itineraryItems = items
+    },
     ADD_ITINERARY_ITEM (state, item) {
       console.log('Adding itinerary item: ', item)
       state.itineraryItems.push(item)

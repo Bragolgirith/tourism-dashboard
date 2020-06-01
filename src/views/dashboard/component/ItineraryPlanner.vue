@@ -10,7 +10,7 @@
         :list="itineraryItems"
         group="itinerary"
         handle=".drag-handle"
-        @change="log"
+        @change="onChange"
       >
         <template v-for="(item, i) in itineraryItems">
           <itinerary-item
@@ -41,7 +41,7 @@
           prepend-icon="mdi-sign-direction-plus"
           return-object
           clearable
-          @input="onItemInput"
+          @input="onAddItem"
         />
       </v-card-text>
     </base-material-card>
@@ -84,14 +84,15 @@
         return textOne.indexOf(searchText) > -1 ||
           textTwo.indexOf(searchText) > -1
       },
-      onItemInput: function (item) {
+      onAddItem: function (item) {
         if (item != null) {
           this.addItineraryItem({ id: item.id })
         }
       },
       formatInput: function (item) { return `${item.id} ${item.name}` },
-      log: function (evt) {
-        window.console.log(evt)
+      onChange: function (evt) {
+        // Commit state to the store.
+        this.$store.commit('UPDATE_ITINERARY_ITEMS', this.itineraryItems)
       },
     },
   }

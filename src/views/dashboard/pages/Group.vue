@@ -101,24 +101,22 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   export default {
     name: 'Group',
     data () {
       return {}
     },
     computed: {
-      form: {
-        get: function () {
-          return this.$store.getters.group
-        },
-        set: function (newValue) {
-          this.$store.commit('UPDATE_GROUP', newValue)
-        },
-      },
+      ...mapState({
+        // Bind the form values to the vuex store
+        form: 'group',
+      }),
     },
     methods: {
       submit () {
-        // Commit form state to the store.
+        // Commit state to the store.
         this.$store.commit('UPDATE_GROUP', this.form)
       },
       reset () {

@@ -1,5 +1,6 @@
 {
   "avatar": "Tур Калкулатор",
+  "dashboard": "Табло",
   "itinerary": "Маршрут",
   "day": "Ден {0}",
   "buttons": "Buttons",
@@ -7,7 +8,6 @@
   "charts": "Charts",
   "components": "Components",
   "ct": "CT",
-  "dashboard": "Dashboard",
   "dtables": "Data Tables",
   "eforms": "Extended Forms",
   "error": "Error Page",

@@ -5,6 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    group: {
+      adultsCount: 4,
+      childrenCount: 2,
+      dogsCount: 1,
+    },
     itineraryItems: [
       {
         id: '0А',

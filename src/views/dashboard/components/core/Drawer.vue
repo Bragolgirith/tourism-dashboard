@@ -98,19 +98,24 @@
     data: () => ({
       items: [
         {
-          title: 'itinerary',
-          icon: 'mdi-clipboard-outline',
-          to: '/tables/itinerary',
-        },
-        {
           icon: 'mdi-view-dashboard',
           title: 'dashboard',
           to: '/',
         },
         {
+          title: 'itinerary',
+          icon: 'mdi-clipboard-outline',
+          to: '/tables/itinerary',
+        },
+        {
           icon: 'mdi-account',
           title: 'user',
           to: '/pages/user',
+        },
+        {
+          icon: 'mdi-chart-timeline-variant',
+          title: 'timeline',
+          to: '/pages/timeline',
         },
         {
           title: 'rtables',

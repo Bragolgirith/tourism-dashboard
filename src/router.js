@@ -12,22 +12,29 @@ export default new Router({
       path: '/',
       component: () => import('@/views/dashboard/Index'),
       children: [
-        {
-          name: i18n.t('itinerary'),
-          path: 'tables/itinerary',
-          component: () => import('@/views/dashboard/itinerary/Itinerary'),
-        },
         // Dashboard
         {
           name: 'Dashboard',
           path: '',
           component: () => import('@/views/dashboard/Dashboard'),
         },
-        // Pages
+        // Itinerary
+        {
+          name: i18n.t('itinerary'),
+          path: 'tables/itinerary',
+          component: () => import('@/views/dashboard/pages/Itinerary'),
+        },
+        // User Profile
         {
           name: 'User Profile',
           path: 'pages/user',
           component: () => import('@/views/dashboard/pages/UserProfile'),
+        },
+        // Timeline
+        {
+          name: 'Timeline',
+          path: 'pages/timeline',
+          component: () => import('@/views/dashboard/pages/Timeline'),
         },
         {
           name: 'Notifications',

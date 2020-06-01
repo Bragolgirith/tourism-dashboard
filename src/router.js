@@ -18,10 +18,16 @@ export default new Router({
           path: '',
           component: () => import('@/views/dashboard/Dashboard'),
         },
+        // Group
+        {
+          name: i18n.t('group'),
+          path: 'pages/group',
+          component: () => import('@/views/dashboard/pages/Group'),
+        },
         // Itinerary
         {
           name: i18n.t('itinerary'),
-          path: 'tables/itinerary',
+          path: 'pages/itinerary',
           component: () => import('@/views/dashboard/pages/Itinerary'),
         },
         // User Profile

@@ -103,9 +103,14 @@
           to: '/',
         },
         {
+          title: 'group',
+          icon: 'mdi-account-group',
+          to: '/pages/group',
+        },
+        {
           title: 'itinerary',
-          icon: 'mdi-clipboard-outline',
-          to: '/tables/itinerary',
+          icon: 'mdi-routes-clock',
+          to: '/pages/itinerary',
         },
         {
           icon: 'mdi-account',

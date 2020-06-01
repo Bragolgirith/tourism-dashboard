@@ -1,9 +1,11 @@
-export default Object.freeze(
+const TYPES = Object.freeze({
+  OTHERS: 'OTHERS',
+  LOCATIONS: 'LOCATIONS',
+})
+
+const Locations = Object.freeze(
   [
-    {
-      id: 'NEW_DAY',
-      name: 'Нов ден',
-    },
+
     {
       id: '0А',
       name: 'Нощувка в хотел "Лайт Касъл"',
@@ -786,3 +788,29 @@ export default Object.freeze(
     },
   ],
 )
+
+const Others = Object.freeze([
+  {
+    id: 'NEW_DAY',
+    name: 'Нов ден',
+    type: TYPES.OTHERS,
+    icon: 'mdi-weather-sunset',
+  },
+])
+
+Locations.forEach(value => {
+  value.type = TYPES.LOCATIONS
+  value.icon = 'mdi-sign-direction'
+})
+Others.forEach(value => {
+  value.type = TYPES.OTHERS
+  value.icon = value.icon || 'mdi-adjust'
+})
+const AllItems = [...Others, ...Locations]
+
+export {
+  TYPES,
+  Others,
+  Locations,
+  AllItems,
+}

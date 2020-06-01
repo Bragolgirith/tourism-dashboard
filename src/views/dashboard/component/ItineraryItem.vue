@@ -5,7 +5,18 @@
         <v-icon left class="drag-handle">
           mdi-drag-vertical
         </v-icon>
-        {{ itemInfo.id }} {{ itemInfo.name }}
+        <template v-if="itemInfo.type === TYPES.OTHERS">
+          <v-icon left>
+            {{ itemInfo.icon }}
+          </v-icon>
+          {{ itemInfo.name }}
+        </template>
+        <template v-else-if="itemInfo.type === TYPES.LOCATIONS">
+          {{ itemInfo.id }} {{ itemInfo.name }}
+        </template>
+        <template v-else>
+          {{ JSON.stringify(itemInfo) }}
+        </template>
       </div>
     </v-col>
 
@@ -23,7 +34,7 @@
   </v-row>
 </template>
 <script>
-  import ItineraryItems from '../../../constants/itinerary-items.js'
+  import { TYPES, AllItems } from '../../../constants/itinerary-items.js'
 
   export default {
     name: 'ItineraryItem',
@@ -35,11 +46,14 @@
     },
     computed: {
       itemInfo: function () {
-        return ItineraryItems.find(item => this.item.id === item.id)
+        return AllItems.find(item => this.item.id === item.id)
       },
       // TODO: computed - combine the itemInfo
       //  with the number of people (from store)
       //  and any price modifiers to calculate the total price
+    },
+    created () {
+      this.TYPES = TYPES
     },
     methods: {
       // TODO: Add popup edit item (timeCorrection, travelTimeCorrection, travelMode, customNote, ...)

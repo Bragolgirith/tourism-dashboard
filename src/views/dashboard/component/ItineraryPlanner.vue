@@ -24,10 +24,7 @@
       <v-divider class="mx-4" />
 
       <v-card-text>
-        <v-btn
-          text
-          @click="addNewDay"
-        >
+        <v-btn text class="ml-n5" @click="addNewDay">
           <v-icon left>
             mdi-weather-sunset
           </v-icon>
@@ -40,9 +37,8 @@
           :filter="customFilter"
           :item-text="formatInput"
           item-value="id"
-          label="Добави локация"
-          placeholder="Започнете да пишете за търсене"
-          prepend-icon="mdi-database-search"
+          placeholder="Нова локация"
+          prepend-icon="mdi-sign-direction-plus"
           return-object
           clearable
           @input="onItemInput"
@@ -55,7 +51,7 @@
   import draggable from 'vuedraggable'
   import { mapMutations, mapState } from 'vuex'
   import ItineraryItem from './ItineraryItem'
-  import ItineraryItems from '../../../constants/itinerary-items.js'
+  import { AllItems } from '../../../constants/itinerary-items.js'
 
   export default {
     name: 'ItineraryPlanner',
@@ -66,7 +62,7 @@
     data () {
       return {
         currentItem: null,
-        items: ItineraryItems,
+        items: AllItems,
       }
     },
     computed: {
@@ -74,7 +70,6 @@
     },
     methods: {
       ...mapMutations({
-        // TODO: WORKING HERE! Add a popup "SelectItineraryItem"
         addItineraryItem: 'ADD_ITINERARY_ITEM',
         removeItineraryItem: 'REMOVE_ITINERARY_ITEM',
       }),

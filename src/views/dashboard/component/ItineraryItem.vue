@@ -12,7 +12,7 @@
           {{ itemInfo.name }}
         </template>
         <template v-else-if="itemInfo.type === TYPES.LOCATIONS">
-          {{ itemInfo.id }} {{ itemInfo.name }} ({{ totalPrice }} лв.)
+          {{ itemInfo.id }} {{ itemInfo.name }}
         </template>
         <template v-else>
           {{ JSON.stringify(itemInfo) }}
@@ -49,10 +49,6 @@
       ...mapGetters(['group']),
       itemInfo: function () {
         return AllItems.find(item => this.item.id === item.id)
-      },
-      totalPrice: function () {
-        // TODO: Add children/dogs/price modifiers. Extract to a util. "(4 възрастни * 20 лв.) + (2 деца * 10 лв.) + (1 куче * 5 лв.) = 105 лв."
-        return this.group.adultsCount * this.itemInfo.pricePerAdult
       },
     },
     created () {

@@ -21,10 +21,14 @@ const DayjsBgPlugin = {
     Vue.prototype.$formatTime = function (date) {
       return dayjs(date).format('HH:mm')
     }
-    Vue.prototype.$formatDuration = function (minutes) {
+    Vue.prototype.$formatDuration = function (durationInMinutes) {
       // Ugly hack to get the duration to format
-      const date = dayjs('2000-01-01').add(minutes, 'minutes')
-      return date.format('H:mm')
+      const dayjsDatetime = dayjs(0).add(durationInMinutes, 'minutes')
+      const dayjsDuration = dayjs.duration(durationInMinutes, 'minutes')
+
+      const hours = Math.floor(dayjsDuration.asHours())
+      const minutes = dayjsDatetime.format('mm')
+      return `${hours}:${minutes}`
     }
   },
 }

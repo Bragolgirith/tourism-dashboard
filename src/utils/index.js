@@ -20,7 +20,7 @@ function splitIntoDays (itineraryItems) {
  * Adds some additional info (title, date, ...) to a list of days
  * @param days, e.g. [{items:[]}]
  * @param startDate the start date (dayjs object)
- * @returns [{title, date, items:[]}]
+ * @returns [{title, date, items:[], totalDurationInMinutes}]
  */
 function populateDaysWithInfo (days, startDate) {
   let runningDate = startDate
@@ -38,19 +38,50 @@ function populateDaysWithInfo (days, startDate) {
  * Adds some additional info (title, date, ...) to a list of days
  * @param items, e.g. [{id, timeCorrection, travelTimeCorrection, travelMode, customNote, pricingCorrection}]
  * @param startDate the start date (dayjs object)
- * @returns [{..., name, description, notes, address, location, price }]
+ * @returns [{..., name, description, notes, address, location, totalPrice }]
  */
-function populateItemsWithInfo (items, startDate) {
+function populateItemsWithInfo (items, group, startDate) {
   let runningDate = startDate
 
   return items.map((item) => {
-    const itemInfo = AllItems.find(element => item.id === element.id)
     const startTime = runningDate
-    const test = { ...item, ...itemInfo, startTime }
 
+    const itemInfo = AllItems.find(element => item.id === element.id)
+
+    // Price calculation + rounding
+    const totalPrice =
+      Math.round(
+        ((group.adultsCount * itemInfo.pricePerAdult) +
+          (group.childrenCount * itemInfo.pricePerAdult * 0.5) +
+          (group.dogsCount * itemInfo.pricePerAdult * 0.5)) *
+        100,
+      ) / 100
+
+    const test = {
+      ...item,
+      ...itemInfo,
+      startTime,
+      totalPrice,
+    }
+
+    // Update the running date
     runningDate = runningDate.add(itemInfo.durationInMinutes, 'minute')
 
     return test
+  })
+}
+
+function populateDaysWithTotalDuration (days) {
+  return days.map(day => {
+    // Calculate the total duration in minutes
+    const totalDurationInMinutes = day.items.reduce((prev, item) => {
+      return prev + item.durationInMinutes
+    }, 0)
+
+    return {
+      ...day,
+      totalDurationInMinutes,
+    }
   })
 }
 
@@ -58,4 +89,5 @@ export {
   splitIntoDays,
   populateDaysWithInfo,
   populateItemsWithInfo,
+  populateDaysWithTotalDuration,
 }

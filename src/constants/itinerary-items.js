@@ -9,7 +9,7 @@ const Locations = Object.freeze(
     {
       id: '0А',
       name: 'Нощувка в хотел "Лайт Касъл"',
-      durationInMinutes: 480,
+      durationInMinutes: 0,
       priceConstant: 0,
       pricePerAdult: 20,
       link: 'линк 0А',
@@ -19,7 +19,7 @@ const Locations = Object.freeze(
     {
       id: '0Б',
       name: 'Нощувка в къща гости "Ахрида"',
-      durationInMinutes: 480,
+      durationInMinutes: 0,
       priceConstant: 0,
       pricePerAdult: 18.8,
       link: 'линк 0Б',

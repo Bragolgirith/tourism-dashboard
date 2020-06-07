@@ -35,6 +35,22 @@ function populateDaysWithInfo (days, startDate) {
   })
 }
 
+function populateDaysWithStartLocation (days) {
+  // No travel required for the first item
+  let runningStartLocationId = null
+
+  return days.map(day => {
+    const startLocationId = runningStartLocationId
+    // Update the running start location id to the last item
+    runningStartLocationId = day.items.slice(-1)[0]?.id
+
+    return {
+      ...day,
+      startLocationId,
+    }
+  })
+}
+
 /**
  * Adds some additional info (title, date, ...) to a list of days
  * @param items, e.g. [{id, timeCorrection, travelTimeCorrection, travelMode, customNote, pricingCorrection}]
@@ -95,10 +111,48 @@ function populateDaysWithTotals (days) {
   })
 }
 
+// Adds the in-between travel items
+function populateDaysWithTravelItems (days) {
+  return days.map(day => {
+    const items = day.items
+
+    const updatedItems = []
+    for (let i = 0; i < items.length; i++) {
+      const currentItem = items[i]
+      if (i === 0) {
+        if (day.startLocationId) {
+          const travelItem = buildTravelItem(day.startLocationId, currentItem.id)
+          updatedItems.push(travelItem)
+        }
+      } else {
+        const previousItem = items[i - 1]
+        const travelItem = buildTravelItem(previousItem.id, currentItem.id)
+        updatedItems.push(travelItem)
+      }
+
+      updatedItems.push(currentItem)
+    }
+
+    // day.items.forEach((item, index) => {
+    //   if (index > 0) {
+    //     const travelItem = buildTravelItem()
+    //
+    //   }
+    //   updatedItems.push(item)
+    // })
+
+    return {
+      ...day,
+      items: updatedItems,
+    }
+  })
+}
+
 // Adds a startTime to each items
 function populateDaysWithSchedule (days) {
   return days.map(day => {
-    let dayTime = dayjs(0)
+    // Start at 08:00 o'clock
+    let runningDayTime = dayjs(0)
       .hour(8)
       .minute(0)
       .second(0)
@@ -106,10 +160,10 @@ function populateDaysWithSchedule (days) {
     return {
       ...day,
       items: day.items.map(item => {
-        const startTime = dayTime
+        const startTime = runningDayTime
 
         // Update the running time
-        dayTime = dayTime.add(item.durationInMinutes, 'minute')
+        runningDayTime = runningDayTime.add(item.durationInMinutes, 'minute')
 
         return {
           ...item,
@@ -118,24 +172,25 @@ function populateDaysWithSchedule (days) {
       }),
     }
   })
+}
 
-  // return days.map(day => {
-  //   return {
-  //     ...day,
-  //     items: day.items.map(item => {
-  //       return {
-  //         ...item,
-  //         startTime: runningTime,
-  //       }
-  //     }),
-  //   }
-  // })
+function buildTravelItem (fromId, toId) {
+  return {
+    id: `TRAVEL_${fromId}_${toId}`,
+    type: 'TRAVEL',
+    icon: 'mdi-train-car',
+    durationInMinutes: 30,
+    totalPrice: 10,
+    name: `Път от ${fromId} до ${toId}`,
+  }
 }
 
 export {
   splitIntoDays,
   populateDaysWithInfo,
+  populateDaysWithStartLocation,
   populateItemsWithInfo,
   populateDaysWithTotals,
+  populateDaysWithTravelItems,
   populateDaysWithSchedule,
 }

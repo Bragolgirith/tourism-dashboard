@@ -2,7 +2,13 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import { AllItems } from '@/constants/itinerary-items'
-import { populateDaysWithInfo, populateDaysWithSchedule, populateDaysWithTotals, splitIntoDays } from './utils'
+import {
+  populateDaysWithInfo,
+  populateDaysWithSchedule, populateDaysWithStartLocation,
+  populateDaysWithTotals,
+  populateDaysWithTravelItems,
+  splitIntoDays,
+} from './utils'
 
 Vue.use(Vuex)
 
@@ -82,17 +88,17 @@ export default new Vuex.Store({
     days: (state, getters) => {
       const startDate = Vue.prototype.$dayjs(state.group.startDate)
 
-      // TODO: WORKING HERE! Add totalPricePerDay
-      // TODO: WORKING HERE! Add travelling (this will be fun)
-      // TODO: WORKING HERE! Add accommodation for the night (this will be fun)
-      const days = splitIntoDays(getters.itineraryItemsWithDetails)
-      const daysWithInfo = populateDaysWithInfo(days, startDate)
-      const daysWithInfoWithTotals = populateDaysWithTotals(daysWithInfo)
-      const daysWithInfoWithDurationWithSchedule = populateDaysWithSchedule(daysWithInfoWithTotals)
+      // TODO: WORKING HERE! Better accommodation for the night (this will be fun)
+      let days = splitIntoDays(getters.itineraryItemsWithDetails)
+      days = populateDaysWithInfo(days, startDate)
+      days = populateDaysWithStartLocation(days)
+      days = populateDaysWithTravelItems(days)
+      days = populateDaysWithSchedule(days)
+      days = populateDaysWithTotals(days)
 
-      console.log(daysWithInfoWithDurationWithSchedule)
+      console.log(days)
       // [{date, items, title, totalDurationInMinutes, totalPrice}, ...]
-      return daysWithInfoWithDurationWithSchedule
+      return days
     },
   },
   mutations: {

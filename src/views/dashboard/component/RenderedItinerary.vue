@@ -45,7 +45,7 @@
               <span>{{ item.startTime.format('HH:mm') }}</span>
             </template>
             <template v-slot:item.durationInMinutes="{ item }">
-              <span>{{ $formatDuration(item.durationInMinutes) }}</span>
+              <span v-if="item.durationInMinutes">{{ $formatDuration(item.durationInMinutes) }}</span>
             </template>
             <template v-slot:item.totalPrice="{ item }">
               <span>{{ item.totalPrice + ' лв.' }}</span>

@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+import { AllItems } from '@/constants/itinerary-items'
+import { populateDaysWithInfo, populateDaysWithSchedule, populateDaysWithTotals, splitIntoDays } from './utils'
 
 Vue.use(Vuex)
 
 const initialGroupState = () => {
   return {
+    startDate: new Date(),
     name: '',
     email: '',
     adultsCount: 4,
@@ -50,6 +53,47 @@ export default new Vuex.Store({
   getters: {
     group: state => state.group,
     itineraryItems: state => state.itineraryItems,
+    itineraryItemsWithDetails: state => {
+      // let runningTime = Vue.prototype.$dayjs(1)
+      //   .hour(8)
+      //   .minute(0)
+      //   .second(0)
+
+      const group = state.group
+      return state.itineraryItems.map(item => {
+        const itemInfo = AllItems.find(element => item.id === element.id)
+
+        // Price calculation + rounding
+        const totalPrice =
+          Math.round(
+            ((group.adultsCount * itemInfo.pricePerAdult) +
+              (group.childrenCount * itemInfo.pricePerAdult * 0.5) +
+              (group.dogsCount * itemInfo.pricePerAdult * 0.5)) *
+            100,
+          ) / 100
+
+        // [{id, type, icon, durationInMinutes, infos, link, name, notes, priceConstant, pricePerAdult, startTime, totalPrice}, ...]
+        return {
+          ...itemInfo,
+          totalPrice,
+        }
+      })
+    },
+    days: (state, getters) => {
+      const startDate = Vue.prototype.$dayjs(state.group.startDate)
+
+      // TODO: WORKING HERE! Add totalPricePerDay
+      // TODO: WORKING HERE! Add travelling (this will be fun)
+      // TODO: WORKING HERE! Add accommodation for the night (this will be fun)
+      const days = splitIntoDays(getters.itineraryItemsWithDetails)
+      const daysWithInfo = populateDaysWithInfo(days, startDate)
+      const daysWithInfoWithTotals = populateDaysWithTotals(daysWithInfo)
+      const daysWithInfoWithDurationWithSchedule = populateDaysWithSchedule(daysWithInfoWithTotals)
+
+      console.log(daysWithInfoWithDurationWithSchedule)
+      // [{date, items, title, totalDurationInMinutes, totalPrice}, ...]
+      return daysWithInfoWithDurationWithSchedule
+    },
   },
   mutations: {
     SET_DRAWER (state, payload) {

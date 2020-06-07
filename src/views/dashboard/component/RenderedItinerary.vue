@@ -25,6 +25,22 @@
             :headers="headers"
             :items="day.items"
           >
+            <template v-slot:header.startTime="{header}">
+              <v-icon class="mr-1" small :title="header.text">
+                mdi-clock-outline
+              </v-icon>
+            </template>
+            <template v-slot:header.durationInMinutes="{header}">
+              <v-icon class="mr-1" small :title="header.text">
+                mdi-timer-sand
+              </v-icon>
+            </template>
+            <template v-slot:header.totalPrice="{header}">
+              <v-icon class="mr-1" small :title="header.text">
+                mdi-cash-multiple
+              </v-icon>
+            </template>
+
             <template v-slot:item.startTime="{ item }">
               <span>{{ item.startTime.format('HH:mm') }}</span>
             </template>
@@ -37,10 +53,10 @@
           </v-data-table>
         </v-card-text>
         <template v-slot:actions :day="day">
-          <v-icon class="mr-1" small>
+          <v-icon class="mr-1" small :color="day.totalDurationInMinutes > 719 ? 'red' : null">
             mdi-clock-outline
           </v-icon>
-          <span class="caption grey--text font-weight-light">обща продължителност: {{ $formatDuration(day.totalDurationInMinutes) }}</span>
+          <span class="caption grey--text font-weight-light">Обща продължителност: {{ $formatDuration(day.totalDurationInMinutes) }} ч.</span>
         </template>
       </base-material-card>
     </v-timeline-item>
@@ -48,8 +64,6 @@
 </template>
 <script>
   import { mapGetters } from 'vuex'
-  import { populateDaysWithInfo, populateItemsWithInfo, splitIntoDays } from '@/utils'
-  import { populateDaysWithTotalDuration } from '../../../utils'
 
   // import RenderedItineraryDay from './RenderedItineraryDay'
 
@@ -60,17 +74,18 @@
     },
     data () {
       return {
-        startDate: new Date(),
         headers: [
           {
             sortable: false,
-            text: 'Час',
+            text: 'Начало',
             value: 'startTime',
+            align: 'center',
           },
           {
             sortable: false,
-            text: '',
+            text: 'Времетраене',
             value: 'durationInMinutes',
+            align: 'center',
           },
           {
             sortable: false,
@@ -87,31 +102,7 @@
       }
     },
     computed: {
-      ...mapGetters(['group', 'itineraryItems']),
-      /* {} */
-      days: function () {
-        const startDate = this.$dayjs(this.startDate)
-          .hour(8)
-          .minute(0)
-          .second(0)
-
-        // TODO: WORKING HERE! Make this more functional. Put everything into the store?
-        // TODO: WORKING HERE! Add totalPricePerDay
-        // TODO: WORKING HERE! Add travelling (this will be fun)
-        const days = splitIntoDays(this.itineraryItems)
-        const daysWithInfo = populateDaysWithInfo(days, startDate)
-        const daysWithItemsWithInfo = daysWithInfo.map(day => {
-          const itemsWithInfo = populateItemsWithInfo(day.items, this.group, startDate)
-          return {
-            ...day,
-            items: itemsWithInfo,
-          }
-        })
-        const daysWithItemsWithInfoWithDuration = populateDaysWithTotalDuration(daysWithItemsWithInfo)
-
-        console.log(daysWithItemsWithInfoWithDuration)
-        return daysWithItemsWithInfoWithDuration
-      },
+      ...mapGetters(['group', 'days']),
     },
   }
 </script>

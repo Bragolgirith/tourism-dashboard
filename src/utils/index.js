@@ -1,3 +1,4 @@
+import * as dayjs from 'dayjs'
 /**
  * Splits a list of itinerary items (left column) to a list of days (right column)
  * @param itineraryItems
@@ -37,11 +38,14 @@ function populateDaysWithInfo (days, startDate) {
 /**
  * Adds some additional info (title, date, ...) to a list of days
  * @param items, e.g. [{id, timeCorrection, travelTimeCorrection, travelMode, customNote, pricingCorrection}]
- * @param startDate the start date (dayjs object)
+ * @param group the group info (as fetched from the store), e.g. {startDate, name, email, adultsCount, childrenCount, dogsCount, notes}
  * @returns [{..., name, description, notes, address, location, totalPrice }]
  */
-function populateItemsWithInfo (items, group, startDate) {
-  let runningDate = startDate
+function populateItemsWithInfo (items, group) {
+  let runningDate = dayjs(this.group.startDate)
+    .hour(8)
+    .minute(0)
+    .second(0)
 
   return items.map((item) => {
     const startTime = runningDate
@@ -71,23 +75,67 @@ function populateItemsWithInfo (items, group, startDate) {
   })
 }
 
-function populateDaysWithTotalDuration (days) {
+function populateDaysWithTotals (days) {
   return days.map(day => {
     // Calculate the total duration in minutes
     const totalDurationInMinutes = day.items.reduce((prev, item) => {
       return prev + item.durationInMinutes
     }, 0)
 
+    // Calculate the total price
+    const totalPrice = day.items.reduce((prev, item) => {
+      return prev + item.totalPrice
+    }, 0)
+
     return {
       ...day,
       totalDurationInMinutes,
+      totalPrice,
     }
   })
+}
+
+// Adds a startTime to each items
+function populateDaysWithSchedule (days) {
+  return days.map(day => {
+    let dayTime = dayjs(0)
+      .hour(8)
+      .minute(0)
+      .second(0)
+
+    return {
+      ...day,
+      items: day.items.map(item => {
+        const startTime = dayTime
+
+        // Update the running time
+        dayTime = dayTime.add(item.durationInMinutes, 'minute')
+
+        return {
+          ...item,
+          startTime,
+        }
+      }),
+    }
+  })
+
+  // return days.map(day => {
+  //   return {
+  //     ...day,
+  //     items: day.items.map(item => {
+  //       return {
+  //         ...item,
+  //         startTime: runningTime,
+  //       }
+  //     }),
+  //   }
+  // })
 }
 
 export {
   splitIntoDays,
   populateDaysWithInfo,
   populateItemsWithInfo,
-  populateDaysWithTotalDuration,
+  populateDaysWithTotals,
+  populateDaysWithSchedule,
 }

@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: './',
   devServer: {
     open: 'Google Chrome',
     disableHostCheck: true,

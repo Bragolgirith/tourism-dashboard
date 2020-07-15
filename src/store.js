@@ -33,18 +33,6 @@ export default new Vuex.Store({
     group: initialGroupState(),
     itineraryItems: [
       {
-        id: '0А',
-        timeCorrection: 0,
-        travelTimeCorrection: 0,
-        travelMode: TRAVEL_MODES.DRIVING,
-      },
-      {
-        id: '0Б',
-        timeCorrection: 0,
-        travelTimeCorrection: 0,
-        travelMode: TRAVEL_MODES.DRIVING,
-      },
-      {
         id: '1А',
         timeCorrection: 0,
         travelTimeCorrection: 0,
@@ -52,6 +40,12 @@ export default new Vuex.Store({
       },
       {
         id: '1Б',
+        timeCorrection: 0,
+        travelTimeCorrection: 0,
+        travelMode: TRAVEL_MODES.DRIVING,
+      },
+      {
+        id: '0А',
         timeCorrection: 0,
         travelTimeCorrection: 0,
         travelMode: TRAVEL_MODES.DRIVING,
@@ -76,6 +70,12 @@ export default new Vuex.Store({
       },
       {
         id: '1Д',
+        timeCorrection: 0,
+        travelTimeCorrection: 0,
+        travelMode: TRAVEL_MODES.DRIVING,
+      },
+      {
+        id: '0Б',
         timeCorrection: 0,
         travelTimeCorrection: 0,
         travelMode: TRAVEL_MODES.DRIVING,

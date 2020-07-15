@@ -31,38 +31,38 @@ export default new Router({
           component: () => import('@/views/dashboard/pages/Itinerary'),
         },
         // User Profile
-        {
-          name: 'User Profile',
-          path: 'pages/user',
-          component: () => import('@/views/dashboard/pages/UserProfile'),
-        },
+        // {
+        //   name: 'User Profile',
+        //   path: 'pages/user',
+        //   component: () => import('@/views/dashboard/pages/UserProfile'),
+        // },
         // Timeline
         {
           name: 'Timeline',
           path: 'pages/timeline',
           component: () => import('@/views/dashboard/pages/Timeline'),
         },
-        {
-          name: 'Notifications',
-          path: 'components/notifications',
-          component: () => import('@/views/dashboard/component/Notifications'),
-        },
-        {
-          name: 'Icons',
-          path: 'components/icons',
-          component: () => import('@/views/dashboard/component/Icons'),
-        },
-        {
-          name: 'Typography',
-          path: 'components/typography',
-          component: () => import('@/views/dashboard/component/Typography'),
-        },
+        // {
+        //   name: 'Notifications',
+        //   path: 'components/notifications',
+        //   component: () => import('@/views/dashboard/component/Notifications'),
+        // },
+        // {
+        //   name: 'Icons',
+        //   path: 'components/icons',
+        //   component: () => import('@/views/dashboard/component/Icons'),
+        // },
+        // {
+        //   name: 'Typography',
+        //   path: 'components/typography',
+        //   component: () => import('@/views/dashboard/component/Typography'),
+        // },
         // Tables
-        {
-          name: 'Regular Tables',
-          path: 'tables/regular-tables',
-          component: () => import('@/views/dashboard/tables/RegularTables'),
-        },
+        // {
+        //   name: 'Regular Tables',
+        //   path: 'tables/regular-tables',
+        //   component: () => import('@/views/dashboard/tables/RegularTables'),
+        // },
         // Maps
         {
           name: 'Google Maps',

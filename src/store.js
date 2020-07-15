@@ -24,7 +24,7 @@ const initialGroupState = () => {
     petsCount: 1,
     travelModes: TRAVEL_MODES_VALUES,
     defaultTravelMode: TRAVEL_MODES_VALUES[0],
-    notes: '',
+    notes: 'Домашният любимец е златна рибка',
   }
 }
 

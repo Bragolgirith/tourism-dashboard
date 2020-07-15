@@ -56,7 +56,7 @@
 
                 <v-col cols="12" md="4">
                   <v-select
-                    v-model="form.selectedTravelMode"
+                    v-model="form.defaultTravelMode"
                     :items="form.travelModes"
                     return-object
                     label="Начин за пътуване"

@@ -4,7 +4,7 @@ import * as dayjs from 'dayjs'
  * @param itineraryItems
  * @returns [{items:[]}]
  */
-import { AllItems } from '@/constants/itinerary-items'
+import { TYPES, AllItems } from '@/constants/itinerary-items'
 
 function splitIntoDays (itineraryItems) {
   return itineraryItems.reduce((arr, item) => {
@@ -121,14 +121,17 @@ function populateDaysWithTravelItems (days) {
       const currentItem = items[i]
       if (i === 0) {
         if (day.startLocationId) {
-          const travelItem = buildTravelItem(day.startLocationId, currentItem.id)
+          const travelItem = buildTravelItem(day.startLocationId, currentItem.id, currentItem.travelTimeCorrection)
           updatedItems.push(travelItem)
         }
       } else {
         const previousItem = items[i - 1]
-        const travelItem = buildTravelItem(previousItem.id, currentItem.id)
+        const travelItem = buildTravelItem(previousItem.id, currentItem.id, currentItem.travelTimeCorrection)
         updatedItems.push(travelItem)
       }
+
+      // Apply time correction
+      currentItem.durationInMinutes = +currentItem.durationInMinutes + (+currentItem.timeCorrection || 0)
 
       updatedItems.push(currentItem)
     }
@@ -163,7 +166,14 @@ function populateDaysWithSchedule (days) {
         const startTime = runningDayTime
 
         // Update the running time
-        runningDayTime = runningDayTime.add(item.durationInMinutes, 'minute')
+        const itemDuration = +item.durationInMinutes
+        // let correctedItemDuration
+        // if (item.type === TYPES.TRAVELS) {
+        //   correctedItemDuration = +item.durationInMinutes + (+item.travelTimeCorrection || 0)
+        // } else {
+        //   correctedItemDuration = +item.durationInMinutes + (+item.timeCorrection || 0)
+        // }
+        runningDayTime = runningDayTime.add(itemDuration, 'minute')
 
         return {
           ...item,
@@ -174,12 +184,13 @@ function populateDaysWithSchedule (days) {
   })
 }
 
-function buildTravelItem (fromId, toId) {
+function buildTravelItem (fromId, toId, travelTimeCorrection) {
   return {
     id: `TRAVEL_${fromId}_${toId}`,
-    type: 'TRAVEL',
+    type: TYPES.TRAVELS,
     icon: 'mdi-train-car',
-    durationInMinutes: 30,
+    // Apply time correction
+    durationInMinutes: 30 + travelTimeCorrection,
     totalPrice: 10,
     name: `Път от ${fromId} до ${toId}`,
   }

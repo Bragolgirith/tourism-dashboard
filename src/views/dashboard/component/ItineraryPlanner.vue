@@ -1,5 +1,7 @@
 <template>
   <div style="display: contents">
+    <edit-itinerary-item-modal v-if="editModalVisible" :item="editModalItem" @update="onItemUpdate" @close="closeModal" />
+
     <base-material-card
       icon="mdi-clipboard-text"
       title="Маршрутен план"
@@ -10,12 +12,13 @@
         :list="itineraryItems"
         group="itinerary"
         handle=".drag-handle"
-        @change="onChange"
+        @change="onDragChange"
       >
         <template v-for="(item, i) in itineraryItems">
           <itinerary-item
             :key="i"
             :item="item"
+            @editItem="openModal(i)"
             @removeItem="removeItineraryItem(i)"
           />
         </template>
@@ -52,10 +55,12 @@
   import { mapMutations, mapState } from 'vuex'
   import ItineraryItem from './ItineraryItem'
   import { AllItems } from '@/constants/itinerary-items'
+  import EditItineraryItemModal from './EditItineraryItemModal'
 
   export default {
     name: 'ItineraryPlanner',
     components: {
+      EditItineraryItemModal,
       ItineraryItem,
       draggable,
     },
@@ -63,6 +68,8 @@
       return {
         currentItem: null,
         items: AllItems,
+        editModalVisible: false,
+        editModalItem: null,
       }
     },
     computed: {
@@ -72,6 +79,8 @@
       ...mapMutations({
         addItineraryItem: 'ADD_ITINERARY_ITEM',
         removeItineraryItem: 'REMOVE_ITINERARY_ITEM',
+        updateItineraryItem: 'UPDATE_ITINERARY_ITEM',
+        updateItineraryItems: 'UPDATE_ITINERARY_ITEMS',
       }),
       addNewDay: function () {
         this.addItineraryItem({ id: 'NEW_DAY' })
@@ -92,9 +101,19 @@
       formatInput: function (item) {
         return `${item.id} ${item.name}`
       },
-      onChange: function (evt) {
-        // Commit state to the store.
-        this.$store.commit('UPDATE_ITINERARY_ITEMS', this.itineraryItems)
+      onDragChange: function (evt) {
+        this.updateItineraryItems(this.itineraryItems)
+      },
+      openModal (i) {
+        this.editModalItem = { ...this.itineraryItems[i] }
+        this.editModalVisible = true
+      },
+      onItemUpdate (item) {
+        this.updateItineraryItem(item)
+        this.editModalVisible = false
+      },
+      closeModal: function () {
+        this.editModalVisible = false
       },
     },
   }

@@ -5,17 +5,17 @@ const TRAVEL_MODES = Object.freeze({
     value: 'DRIVING',
   },
   BICYCLING: {
-    icons: 'mdi-bike',
+    icon: 'mdi-bike',
     text: 'Колоездене',
     value: 'BICYCLING',
   },
   TRANSIT: {
-    icons: 'mdi-bus',
+    icon: 'mdi-bus',
     text: 'Обществен транспорт',
     value: 'TRANSIT',
   },
   WALKING: {
-    icons: 'mdi-walk',
+    icon: 'mdi-walk',
     text: 'Пеша',
     value: 'WALKING',
   },

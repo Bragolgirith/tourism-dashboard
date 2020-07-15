@@ -1,6 +1,7 @@
 const TYPES = Object.freeze({
   OTHERS: 'OTHERS',
   LOCATIONS: 'LOCATIONS',
+  TRAVELS: 'TRAVELS',
 })
 
 const Locations = Object.freeze(

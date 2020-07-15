@@ -19,7 +19,7 @@ const initialGroupState = () => {
     email: '',
     adultsCount: 4,
     childrenCount: 2,
-    dogsCount: 1,
+    petsCount: 1,
     notes: '',
   }
 }
@@ -74,7 +74,7 @@ export default new Vuex.Store({
           Math.round(
             ((group.adultsCount * itemInfo.pricePerAdult) +
               (group.childrenCount * itemInfo.pricePerAdult * 0.5) +
-              (group.dogsCount * itemInfo.pricePerAdult * 0.5)) *
+              (group.petsCount * itemInfo.pricePerAdult * 0.5)) *
             100,
           ) / 100
 

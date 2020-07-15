@@ -48,8 +48,8 @@
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
-                    v-model="form.dogsCount"
-                    label="Кучета"
+                    v-model="form.petsCount"
+                    label="Домашни любимци"
                     type="number"
                   />
                 </v-col>

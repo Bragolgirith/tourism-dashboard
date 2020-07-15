@@ -54,7 +54,7 @@ function populateDaysWithStartLocation (days) {
 /**
  * Adds some additional info (title, date, ...) to a list of days
  * @param items, e.g. [{id, timeCorrection, travelTimeCorrection, travelMode, customNote, pricingCorrection}]
- * @param group the group info (as fetched from the store), e.g. {startDate, name, email, adultsCount, childrenCount, dogsCount, notes}
+ * @param group the group info (as fetched from the store), e.g. {startDate, name, email, adultsCount, childrenCount, petsCount, notes}
  * @returns [{..., name, description, notes, address, location, totalPrice }]
  */
 function populateItemsWithInfo (items, group) {
@@ -73,7 +73,7 @@ function populateItemsWithInfo (items, group) {
       Math.round(
         ((group.adultsCount * itemInfo.pricePerAdult) +
           (group.childrenCount * itemInfo.pricePerAdult * 0.5) +
-          (group.dogsCount * itemInfo.pricePerAdult * 0.5)) *
+          (group.petsCount * itemInfo.pricePerAdult * 0.5)) *
         100,
       ) / 100
 

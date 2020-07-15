@@ -27,12 +27,6 @@
       <v-divider class="mx-4" />
 
       <v-card-text>
-        <v-btn text class="ml-n5" @click="addNewDay">
-          <v-icon left>
-            mdi-weather-sunset
-          </v-icon>
-          Нов ден
-        </v-btn>
         <v-autocomplete
           ref="inputAddItem"
           v-model="currentItem"
@@ -46,6 +40,12 @@
           clearable
           @input="onAddItem"
         />
+        <v-btn text class="ml-n5" @click="addNewDay">
+          <v-icon left>
+            mdi-weather-sunset
+          </v-icon>
+          Нов ден
+        </v-btn>
       </v-card-text>
     </base-material-card>
   </div>
@@ -96,6 +96,10 @@
       onAddItem: function (item) {
         if (item != null) {
           this.addItineraryItem({ id: item.id })
+          // A workaround to clear the input after a selection
+          this.$nextTick(() => {
+            this.currentItem = null
+          })
         }
       },
       formatInput: function (item) {

@@ -54,6 +54,16 @@
                   />
                 </v-col>
 
+                <v-col cols="12" md="4">
+                  <v-select
+                    v-model="form.selectedTravelMode"
+                    :items="form.travelModes"
+                    return-object
+                    label="Начин за пътуване"
+                    outlined
+                  />
+                </v-col>
+
                 <v-col cols="12">
                   <v-textarea
                     v-model="form.notes"

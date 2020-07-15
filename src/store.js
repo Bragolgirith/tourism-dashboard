@@ -9,6 +9,7 @@ import {
   populateDaysWithTravelItems,
   splitIntoDays,
 } from './utils'
+import { TRAVEL_MODES_VALUES } from '@/constants/travel-modes'
 
 Vue.use(Vuex)
 
@@ -20,6 +21,8 @@ const initialGroupState = () => {
     adultsCount: 4,
     childrenCount: 2,
     petsCount: 1,
+    travelModes: TRAVEL_MODES_VALUES,
+    selectedTravelMode: TRAVEL_MODES_VALUES[0],
     notes: '',
   }
 }

@@ -8,14 +8,14 @@
         <v-container>
           <v-col cols="12">
             <v-text-field
-              v-model="internalValue.timeCorrection"
+              v-model.number="internalValue.timeCorrection"
               label="Времева корекция (минути)"
               type="number"
             />
           </v-col>
           <v-col cols="12">
             <v-text-field
-              v-model="internalValue.travelTimeCorrection"
+              v-model.number="internalValue.travelTimeCorrection"
               label="Времева корекция път (минути)"
               type="number"
             />

@@ -34,21 +34,21 @@
               <v-row>
                 <v-col cols="12" md="4">
                   <v-text-field
-                    v-model="form.adultsCount"
+                    v-model.number="form.adultsCount"
                     label="Възрастни"
                     type="number"
                   />
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
-                    v-model="form.childrenCount"
+                    v-model.number="form.childrenCount"
                     label="Деца"
                     type="number"
                   />
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
-                    v-model="form.petsCount"
+                    v-model.number="form.petsCount"
                     label="Домашни любимци"
                     type="number"
                   />

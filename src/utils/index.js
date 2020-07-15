@@ -185,12 +185,13 @@ function populateDaysWithSchedule (days) {
 }
 
 function buildTravelItem (fromId, toId, travelTimeCorrection) {
+  const durationInMinutes = +30 + (+travelTimeCorrection || 0)
   return {
     id: `TRAVEL_${fromId}_${toId}`,
     type: TYPES.TRAVELS,
     icon: 'mdi-train-car',
     // Apply time correction
-    durationInMinutes: +30 + travelTimeCorrection,
+    durationInMinutes: durationInMinutes,
     totalPrice: 10,
     name: `Път от ${fromId} до ${toId}`,
   }

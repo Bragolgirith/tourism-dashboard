@@ -190,7 +190,7 @@ function buildTravelItem (fromId, toId, travelTimeCorrection) {
     type: TYPES.TRAVELS,
     icon: 'mdi-train-car',
     // Apply time correction
-    durationInMinutes: 30 + travelTimeCorrection,
+    durationInMinutes: +30 + travelTimeCorrection,
     totalPrice: 10,
     name: `Път от ${fromId} до ${toId}`,
   }

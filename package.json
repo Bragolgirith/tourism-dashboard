@@ -15,6 +15,7 @@
   "dependencies": {
     "core-js": "^3.6.2",
     "dayjs": "^1.8.28",
+    "printd": "^1.4.2",
     "vue": "^2.6.11",
     "vue-i18n": "^8.15.3",
     "vue-router": "^3.1.3",

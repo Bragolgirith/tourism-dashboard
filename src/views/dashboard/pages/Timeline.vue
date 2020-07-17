@@ -1,134 +1,196 @@
 <template>
-  <v-container
-    id="timeline"
-    fluid
-    tag="section"
-  >
-    <base-v-component
-      heading="Timelines"
-      link="components/timelines"
-    />
+  <v-container fluid>
+    <section class="mb-12 text-center">
+      <v-btn
+        text
+        title="Отпечатай"
+        @click="printItinerary"
+      >
+        <v-icon class="mr-2">
+          mdi-printer
+        </v-icon>
+        Отпечатай
+      </v-btn>
+    </section>
+    <div id="printable">
+      <v-card>
+        <v-card-title class="subheading font-weight-bold">
+          Група
+        </v-card-title>
+        <v-divider />
+        <v-list dense>
+          <v-list-item>
+            <v-list-item-content>Начална дата:</v-list-item-content>
+            <v-list-item-content class="align-end">
+              {{ group.startDate }}
+            </v-list-item-content>
+          </v-list-item>
 
-    <v-row>
-      <v-col>
-        <v-timeline align-top>
-          <v-timeline-item
-            v-for="(timeline, i) in timelines"
-            :key="i"
-            :color="timeline.color"
-            :icon="timeline.icon"
-            fill-dot
-            large
+          <v-list-item>
+            <v-list-item-content>Лице за контакти:</v-list-item-content>
+            <v-list-item-content class="align-end">
+              {{ group.name }}
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-content>Email:</v-list-item-content>
+            <v-list-item-content class="align-end">
+              {{ group.email }}
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-content>Възрастни:</v-list-item-content>
+            <v-list-item-content class="align-end">
+              {{ group.adultsCount }}
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-content>Деца:</v-list-item-content>
+            <v-list-item-content class="align-end">
+              {{ group.childrenCount }}
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-content>Домашни любимци:</v-list-item-content>
+            <v-list-item-content class="align-end">
+              {{ group.petsCount }}
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-content>Начин за пътуване:</v-list-item-content>
+            <v-list-item-content class="align-end">
+              {{ group.defaultTravelMode.text }}
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-content>Бележки:</v-list-item-content>
+            <v-list-item-content class="align-end">
+              {{ group.notes }}
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-card>
+      <hr class="hidden-screen-only">
+      <v-timeline align-top dense>
+        <v-timeline-item
+          v-for="(day, i) in days"
+          :key="i"
+          icon="mdi-calendar-today"
+          fill-dot
+          large
+        >
+          <base-material-card
+            class="px-5 py-3"
           >
-            <v-card class="pa-6">
-              <v-chip
-                :color="timeline.color"
-                class="overline mb-3"
-                small
+            <template v-slot:heading :day="day">
+              <div class="display-2 font-weight-light">
+                {{ day.title }}
+              </div>
+
+              <div class="subtitle-1 font-weight-light">
+                {{ $formatDate(day.date) }}
+              </div>
+            </template>
+            <v-card-text>
+              <v-data-table
+                hide-default-footer
+                :headers="headers"
+                :items="day.items"
               >
-                {{ timeline.chip }}
-              </v-chip>
+                <template v-slot:header.startTime="{header}">
+                  <v-icon class="mr-1" small :title="header.text">
+                    mdi-clock-outline
+                  </v-icon>
+                </template>
+                <template v-slot:header.durationInMinutes="{header}">
+                  <v-icon class="mr-1" small :title="header.text">
+                    mdi-timer-sand
+                  </v-icon>
+                </template>
+                <template v-slot:header.totalPrice="{header}">
+                  <v-icon class="mr-1" small :title="header.text">
+                    mdi-cash-multiple
+                  </v-icon>
+                </template>
 
-              <p
-                class="subtitle-1 font-weight-light"
-                v-text="timeline.text"
-              />
-
-              <div
-                class="text-uppercase body-2"
-                v-text="timeline.subtext"
-              />
-
-              <template v-if="timeline.action">
-                <v-divider class="mb-3" />
-
-                <v-menu
-                  v-model="menu"
-                  bottom
-                  offset-y
-                  origin="top left"
-                  right
-                  transition="scale-transition"
-                >
-                  <template v-slot:activator="{ attrs, on }">
-                    <v-btn
-                      v-bind="attrs"
-                      :color="timeline.action"
-                      large
-                      rounded
-                      v-on="on"
-                    >
-                      <v-icon
-                        left
-                        v-text="timeline.actionIcon"
-                      />
-                      <v-icon right>
-                        {{ menu ? 'mdi-menu-up' : 'mdi-menu-down' }}
-                      </v-icon>
-                    </v-btn>
-                  </template>
-
-                  <v-sheet>
-                    <v-list>
-                      <v-list-item
-                        v-for="a in timeline.actions"
-                        :key="a"
-                        link
-                      >
-                        <v-list-item-title v-text="a" />
-                      </v-list-item>
-                    </v-list>
-                  </v-sheet>
-                </v-menu>
-              </template>
-            </v-card>
-          </v-timeline-item>
-        </v-timeline>
-      </v-col>
-    </v-row>
+                <template v-slot:item.startTime="{ item }">
+                  <span>{{ item.startTime.format('HH:mm') }}</span>
+                </template>
+                <template v-slot:item.durationInMinutes="{ item }">
+                  <span v-if="item.durationInMinutes">{{ $formatDuration(item.durationInMinutes) }}</span>
+                </template>
+                <template v-slot:item.totalPrice="{ item }">
+                  <span>{{ item.totalPrice + ' лв.' }}</span>
+                </template>
+              </v-data-table>
+            </v-card-text>
+            <template v-slot:actions :day="day">
+              <v-icon class="mr-1" small :color="day.totalDurationInMinutes > 719 ? 'red' : null">
+                mdi-clock-outline
+              </v-icon>
+              <span class="caption grey--text font-weight-light">Обща продължителност: {{
+                $formatDuration(day.totalDurationInMinutes)
+              }} ч.</span>
+            </template>
+          </base-material-card>
+          <hr class="hidden-screen-only">
+        </v-timeline-item>
+      </v-timeline>
+    </div>
   </v-container>
 </template>
-
 <script>
-  export default {
-    name: 'DashboardPagesTimeline',
+  import { mapGetters } from 'vuex'
+  import { Printd } from 'printd'
 
-    data: () => ({
-      menu: false,
-      timelines: [
-        {
-          chip: 'Some title',
-          color: 'error',
-          icon: 'mdi-briefcase',
-          text: 'Wifey made the best Father\'s Day meal ever. So thankful so happy so blessed. Thank you for making my family We just had fun with the “future” theme !!! It was a fun night all together ... The always rude Kanye Show at 2am Sold Out Famous viewing @ Figueroa and 12th in downtown.',
-          subtext: '11 hours ago via twitter',
-        },
-        {
-          chip: 'Another one',
-          color: 'success',
-          icon: 'mdi-puzzle',
-          text: 'Thank God for the support of my wife and real friends. I also wanted to point out that it’s the first album to go number 1 off of streaming!!! I love you Ellen and also my number one design rule of anything I do from shoes to music to homes is that Kim has to like it....',
-        },
-        {
-          chip: 'Another title',
-          color: 'info',
-          icon: 'mdi-fingerprint',
-          text: 'Called I Miss the Old Kanye That’s all it was Kanye And I love you like Kanye loves Kanye Famous viewing @ Figueroa and 12th in downtown LA 11:10PM. What if Kanye made a song about Kanye Royère doesn\'t make a Polar bear bed but the Polar bear couch is my favorite piece of furniture we own It wasn’t any Kanyes Set on his goals Kanye',
-          action: 'info',
-          actionIcon: 'mdi-wrench',
-          actions: [
-            'Action',
-            'Another Action',
-            'Something else here',
-          ],
-        },
-        {
-          chip: 'Another one',
-          color: 'warning',
-          icon: 'mdi-airplane-landing',
-          text: 'Tune into Big Boy\'s 92.3 I\'m about to play the first single from Cruel Winter also to Kim’s hair and makeup Lorraine jewelry and the whole style squad at Balmain and the Yeezy team. Thank you Anna for the invite thank you to the whole Vogue team',
-        },
-      ],
-    }),
+  export default {
+    name: 'Timeline',
+    components: {
+    // RenderedItineraryDay,
+    },
+    data () {
+      return {
+        headers: [
+          {
+            sortable: false,
+            text: 'Начало',
+            value: 'startTime',
+            align: 'center',
+          },
+          {
+            sortable: false,
+            text: 'Времетраене',
+            value: 'durationInMinutes',
+            align: 'center',
+          },
+          {
+            sortable: false,
+            text: '',
+            value: 'name',
+          },
+          {
+            sortable: false,
+            text: 'Цена',
+            value: 'totalPrice',
+            align: 'right',
+          },
+        ],
+      }
+    },
+    computed: {
+      ...mapGetters(['group', 'days']),
+    },
+    methods: {
+      printItinerary () {
+        const d = new Printd()
+        d.print(document.getElementById('printable'))
+      },
+    },
   }
 </script>

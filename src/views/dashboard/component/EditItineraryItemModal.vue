@@ -33,10 +33,10 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer />
-        <v-btn color="blue darken-1" text @click="closeModal()">
+        <v-btn color="grey" text @click="closeModal()">
           Затвори
         </v-btn>
-        <v-btn color="blue darken-1" text @click="updateValue()">
+        <v-btn color="primary" text @click="updateValue()">
           Запиши
         </v-btn>
       </v-card-actions>

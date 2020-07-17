@@ -24,7 +24,7 @@
         </template>
       </draggable>
 
-      <v-divider class="mx-4" />
+      <v-divider class="mt-8" />
 
       <v-card-text>
         <v-autocomplete
@@ -34,17 +34,17 @@
           :filter="customFilter"
           :item-text="formatInput"
           item-value="id"
-          placeholder="Нова локация"
+          placeholder="Добави локация"
           prepend-icon="mdi-sign-direction-plus"
           return-object
           clearable
           @input="onAddItem"
         />
-        <v-btn text class="ml-n5" @click="addNewDay">
+        <v-btn text class="ml-n6" @click="addNewDay">
           <v-icon left>
             mdi-weather-sunset
           </v-icon>
-          Нов ден
+          Добави ден
         </v-btn>
       </v-card-text>
     </base-material-card>
